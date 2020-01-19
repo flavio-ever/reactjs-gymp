@@ -3,7 +3,7 @@ import { Switch } from 'react-router-dom';
 import Route from './Route';
 
 import SignIn from '../pages/SignIn';
-import Dashboard from '../pages/Dashboard';
+import Students from '../pages/Students';
 import Enrollment from '../pages/Enrollment';
 import Plans from '../pages/Plans';
 import Orders from '../pages/Orders';
@@ -12,10 +12,10 @@ export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={SignIn} />
-      <Route path="/dashboard" component={Dashboard} isPrivate />
-      <Route path="/enrollment" component={Enrollment} />
-      <Route path="/plans" component={Plans} />
-      <Route path="/orders" component={Orders} />
+      <Route path="/students" component={Students} isPrivate />
+      <Route path="/enrollment" component={Enrollment} isPrivate />
+      <Route path="/plans" component={Plans} isPrivate />
+      <Route path="/orders" component={Orders} isPrivate />
     </Switch>
   );
 }

@@ -28,7 +28,7 @@ export default function RouteWrapper({
 
   // Se estiver logado e rota não for privada = dashboard
   if (signed && !isPrivate) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/students" />;
   }
 
   const Layout = signed ? DefaultLayout : AuthLayout;
