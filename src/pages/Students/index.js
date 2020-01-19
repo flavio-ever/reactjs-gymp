@@ -18,7 +18,8 @@ export default function Students() {
         </div>
       </nav>
       <Content>
-        <input type="text" name="" id="" />
+        aa <input type="text" name="" id="" />
+        xxx
       </Content>
     </Container>
   );

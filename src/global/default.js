@@ -28,7 +28,9 @@ export const Container = styled.div`
     }
   }
 
-  input [type='text'] {
+  input[type='text'],
+  input[type='password'],
+  input[type='email'] {
     background: #fff;
     border: 1px solid #dddddd;
     border-radius: 4px;
