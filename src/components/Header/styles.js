@@ -34,6 +34,10 @@ export const Content = styled.div`
       font-weight: bold;
       padding-right: 20px;
     }
+
+    .selected {
+      color: #444;
+    }
   }
 
   aside {
@@ -51,6 +55,7 @@ export const Content = styled.div`
       margin: 0;
       color: #ee4d64;
     }
+
     * {
       flex: 1;
       margin: 5px 0;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Container, Content, Profile } from './styles';
 import { signOut } from '~/store/modules/auth/actions';
 
@@ -21,10 +21,18 @@ export default function Header() {
       <Content>
         <nav>
           <img src={logo} alt="Gympoint" />
-          <Link to="/students">ALUNOS</Link>
-          <Link to="/plans">PLANOS</Link>
-          <Link to="/enrollment">MATRÍCULAS</Link>
-          <Link to="/orders">PEDIDOS DE AUXÍLIO</Link>
+          <NavLink activeClassName="selected" to="/students">
+            ALUNOS
+          </NavLink>
+          <NavLink activeClassName="selected" to="/plans">
+            PLANOS
+          </NavLink>
+          <NavLink activeClassName="selected" to="/enrollment">
+            MATRÍCULAS
+          </NavLink>
+          <NavLink activeClassName="selected" to="/orders">
+            PEDIDOS DE AUXÍLIO
+          </NavLink>
         </nav>
         <aside>
           <Profile>
