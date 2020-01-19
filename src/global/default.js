@@ -28,6 +28,19 @@ export const Container = styled.div`
     }
   }
 
+  input [type='text'] {
+    background: #fff;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    height: 45px;
+    padding: 0 15px;
+    margin: 8px 0 20px 0;
+    color: #666;
+    width: 100%;
+
+    display: block;
+  }
+
   button {
     color: #fff;
     height: 36px;

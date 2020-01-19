@@ -17,7 +17,9 @@ export default function Students() {
           </button>
         </div>
       </nav>
-      <Content>xx</Content>
+      <Content>
+        <input type="text" name="" id="" />
+      </Content>
     </Container>
   );
 }
