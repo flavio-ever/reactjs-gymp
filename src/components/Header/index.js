@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { Container, Content, Profile } from './styles';
 import { signOut } from '~/store/modules/auth/actions';
 
-import logo from '~/assets/logo-header-3@3x.png';
+import logo from '~/assets/logo-horizontal.svg';
 
 export default function Header() {
   const profile = useSelector(state => state.user.profile);

@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { signInRequest } from '~/store/modules/auth/actions';
 
-import logotipoAuth from '~/assets/logo-2@3x.png';
+import logotipoAuth from '~/assets/logo-vertical.svg';
 
 const schema = Yup.object().shape({
   email: Yup.string()
