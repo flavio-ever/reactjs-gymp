@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 export const Container = styled.div`
-  max-width: 1200px;
-  width: 900px;
+  max-width: ${props => props.width || '900px'};
 
   margin: 0 auto;
+  padding: 0 30px;
+
   display: flex;
   flex-direction: column;
 
@@ -21,6 +22,11 @@ export const Container = styled.div`
     margin: 20px 0;
 
     .btns {
+      *:not(button) {
+        order: 2;
+        margin: 0 10px 0 10px;
+      }
+
       display: flex;
       button {
         margin-left: 10px;
@@ -34,9 +40,8 @@ export const Container = styled.div`
     background: #fff;
     border: 1px solid #dddddd;
     border-radius: 4px;
-    height: 45px;
+    height: 36px;
     padding: 0 15px;
-    margin: 8px 0 20px 0;
     color: #666;
     width: 100%;
 
