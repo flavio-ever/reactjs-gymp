@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { IoMdSearch } from 'react-icons/io';
-import api from '~/services/api';
+import { useDispatch, useSelector } from 'react-redux';
+import { studentsFindRequest } from '~/store/modules/students/actions';
 
 // import { Container } from './styles';
 import { Container, Content } from '~/global/default';
@@ -12,20 +13,20 @@ export default function Students() {
   const [perPage, setPerPage] = useState(5);
   const [name, setName] = useState('');
 
+  const dispatch = useDispatch();
+  const students = useSelector(state => state.students.students);
+
   useEffect(() => {
     async function loadStudents() {
-      const response = await api.get('students', {
-        params: {
-          page,
-          perPage,
-          name,
-        },
-      });
-      console.tron.log(response);
+      dispatch(studentsFindRequest(page, perPage, name));
     }
 
     loadStudents();
-  }, [name, page, perPage]);
+  }, [dispatch, name, page, perPage]);
+
+  const search = value => {
+    setName(value);
+  };
 
   return (
     <Container width="1200px" cellpadding="10">
@@ -36,13 +37,13 @@ export default function Students() {
           <button type="button" className="btn--primary">
             Cadastrar
           </button>
-          <Input type="text" placeholder="Buscar Aluno">
+          <Input type="text" placeholder="Buscar Aluno" search={search}>
             <IoMdSearch />
           </Input>
         </div>
       </nav>
       <Content>
-        <TableList />
+        <TableList students={students !== null ? students.data : null} />
       </Content>
     </Container>
   );
