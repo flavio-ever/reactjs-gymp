@@ -48,7 +48,7 @@ export const Container = styled.div`
     display: block;
   }
 
-  button {
+  button.btn {
     color: #fff;
     height: 36px;
     padding: 0 16px;

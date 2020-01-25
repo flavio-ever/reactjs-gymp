@@ -51,8 +51,6 @@ export const Content = styled.div`
     }
 
     button {
-      padding: 0;
-      margin: 0;
       color: #ee4d64;
     }
 

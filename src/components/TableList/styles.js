@@ -31,7 +31,6 @@ export const Table = styled.table`
   button {
     display: inline-block;
     height: auto;
-    padding: 0;
     margin-left: 15px;
     font-weight: normal;
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { IoMdSearch } from 'react-icons/io';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { studentsFindRequest } from '~/store/modules/students/actions';
 
 // import { Container } from './styles';
@@ -10,11 +10,10 @@ import Input from '~/components/Input';
 
 export default function Students() {
   const [page, setPage] = useState(1);
-  const [perPage, setPerPage] = useState(5);
+  const perPage = 5;
   const [name, setName] = useState('');
 
   const dispatch = useDispatch();
-  const students = useSelector(state => state.students.students);
 
   useEffect(() => {
     async function loadStudents() {
@@ -34,7 +33,7 @@ export default function Students() {
         <h1>Gerenciando alunos</h1>
 
         <div className="btns">
-          <button type="button" className="btn--primary">
+          <button type="button" className="btn btn--primary">
             Cadastrar
           </button>
           <Input type="text" placeholder="Buscar Aluno" search={search}>
@@ -43,7 +42,11 @@ export default function Students() {
         </div>
       </nav>
       <Content>
-        <TableList students={students !== null ? students.data : null} />
+        <TableList
+          moduleName="students"
+          stateName="students"
+          setPage={setPage}
+        />
       </Content>
     </Container>
   );
