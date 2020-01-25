@@ -1,49 +1,48 @@
 import React from 'react';
+import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 
 import { Container } from './styles';
 
-export default function Pagination({ page, totalPage, setPage }) {
-  const perLabel = 4;
-  const _totalPage = totalPage + 1;
+export default function Pagination({
+  page,
+  total,
+  totalPage,
+  perPage,
+  setPage,
+}) {
+  let start = 0;
+  let end = 0;
 
-  let maxLabel = page < _totalPage - perLabel ? page + perLabel : _totalPage;
-
-  let perPage = page > _totalPage - perLabel ? _totalPage - perLabel : page;
-
-  if (perLabel >= _totalPage) {
-    maxLabel = _totalPage;
-    perPage = 1;
+  function getPageStart(pageSize, pageNr) {
+    return pageSize * pageNr;
   }
 
-  const allPages = () => {
-    const pages = [];
-    for (let i = perPage; i < maxLabel; i++) {
-      pages.push(
-        <button
-          onClick={() => setPage(i)}
-          type="button"
-          key={i}
-          onKeyDown={() => setPage(i)}
-        >
-          {i},
-        </button>
-      );
-    }
-    return pages;
-  };
+  function getPageLabel(pageSizeAll, pageSize, pageNr) {
+    start = Math.max(getPageStart(pageSize, pageNr), 0) + 1;
+    end = Math.min(getPageStart(pageSize, pageNr + 1), pageSizeAll);
+
+    return `${start} - ${end} de ${total}`;
+  }
 
   return (
-    <div>
-      <button onClick={() => setPage(page > 1 ? page - 1 : page)} type="button">
-        Anterior
-      </button>
-      {allPages()}
+    <Container>
       <button
-        onClick={() => setPage(page < totalPage ? page + 1 : page)}
+        className="btn btn--secondary"
+        onClick={() => setPage(start >= end ? page - 1 : totalPage)}
         type="button"
       >
-        Próximo
+        <IoIosArrowBack size={20} />
       </button>
-    </div>
+
+      <span>{getPageLabel(total, perPage, page - 1)}</span>
+
+      <button
+        className="btn btn--secondary"
+        onClick={() => setPage(start < end && start !== end ? page + 1 : 1)}
+        type="button"
+      >
+        <IoIosArrowForward size={20} />
+      </button>
+    </Container>
   );
 }

@@ -41,7 +41,9 @@ export default function TableList({ moduleName, stateName, setPage }) {
         </tbody>
       </Table>
       <Pagination
+        total={students.total}
         totalPage={students.totalPage}
+        perPage={students.perPage}
         page={students.page}
         setPage={setPage}
       />
