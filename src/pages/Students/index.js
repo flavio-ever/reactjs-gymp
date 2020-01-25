@@ -43,6 +43,7 @@ export default function Students() {
       </nav>
       <Content>
         <TableList
+          header={['Nome', 'E-mail', 'Idade']}
           moduleName="students"
           stateName="students"
           setPage={setPage}

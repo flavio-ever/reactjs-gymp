@@ -1,5 +1,6 @@
 import React from 'react';
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
+import PropTypes from 'prop-types';
 
 import { Container } from './styles';
 
@@ -46,3 +47,19 @@ export default function Pagination({
     </Container>
   );
 }
+
+Pagination.propTypes = {
+  page: PropTypes.number,
+  total: PropTypes.number,
+  totalPage: PropTypes.number,
+  perPage: PropTypes.number,
+  setPage: PropTypes.func,
+};
+
+Pagination.defaultProps = {
+  page: 0,
+  total: 0,
+  totalPage: 0,
+  perPage: 0,
+  setPage: Function,
+};

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Pagination from '../Pagination';
 import { Table } from './styles';
 
-export default function TableList({ moduleName, stateName, setPage }) {
+export default function TableList({ moduleName, stateName, setPage, header }) {
   const students = useSelector(state => state[moduleName][stateName]);
 
   if (!students) {
@@ -17,9 +17,9 @@ export default function TableList({ moduleName, stateName, setPage }) {
       <Table>
         <thead>
           <tr>
-            <th>NOME</th>
-            <th>E-MAIL</th>
-            <th>IDADE</th>
+            {header.map(name => (
+              <th key={name}>{name}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
@@ -52,9 +52,15 @@ export default function TableList({ moduleName, stateName, setPage }) {
 }
 
 TableList.propTypes = {
-  // students: PropTypes.arrayOf(PropTypes.any),
+  header: PropTypes.arrayOf(PropTypes.any),
+  setPage: PropTypes.func,
+  stateName: PropTypes.string,
+  moduleName: PropTypes.string,
 };
 
 TableList.defaultProps = {
-  students: null,
+  header: [],
+  setPage: Function,
+  stateName: '',
+  moduleName: '',
 };
