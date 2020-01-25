@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 import Pagination from '../Pagination';
 import { Table } from './styles';
 
-export default function TableList({ moduleName, stateName, setPage, header }) {
-  const students = useSelector(state => state[moduleName][stateName]);
+export default function TableList({ moduleName, stateName, header, setPage }) {
+  const data = useSelector(state => state[moduleName][stateName]);
 
-  if (!students) {
+  if (!data || !data.data.length) {
     return <div>Ops! Infelizmente nenhum aluno encontrado.</div>;
   }
 
@@ -23,7 +23,7 @@ export default function TableList({ moduleName, stateName, setPage, header }) {
           </tr>
         </thead>
         <tbody>
-          {students.data.map(student => (
+          {data.data.map(student => (
             <tr key={student.email}>
               <td>{student.name}</td>
               <td>{student.email}</td>
@@ -41,10 +41,10 @@ export default function TableList({ moduleName, stateName, setPage, header }) {
         </tbody>
       </Table>
       <Pagination
-        total={students.total}
-        totalPage={students.totalPage}
-        perPage={students.perPage}
-        page={students.page}
+        total={data.total}
+        totalPage={data.totalPage}
+        perPage={data.perPage}
+        page={data.page}
         setPage={setPage}
       />
     </>
