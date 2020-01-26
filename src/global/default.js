@@ -24,7 +24,7 @@ export const Container = styled.div`
     .btns {
       *:not(button) {
         order: 2;
-        margin: 0 10px 0 10px;
+        margin: 0 5px 0 5px;
       }
 
       display: flex;

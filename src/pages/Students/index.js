@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { IoMdSearch } from 'react-icons/io';
 import { useDispatch } from 'react-redux';
 import { studentsFindRequest } from '~/store/modules/students/actions';
 
-// import { Container } from './styles';
-import { Container, Content } from '~/global/default';
-import TableList from '~/components/TableList';
-import Input from '~/components/Input';
+import List from './List';
+import Form from './Form';
 
 export default function Students() {
   const [page, setPage] = useState(1);
@@ -14,6 +11,7 @@ export default function Students() {
   const [name, setName] = useState('');
 
   const dispatch = useDispatch();
+  const edit = false;
 
   useEffect(() => {
     async function loadStudents() {
@@ -27,28 +25,6 @@ export default function Students() {
     setName(value);
   };
 
-  return (
-    <Container width="1200px" cellpadding="10">
-      <nav>
-        <h1>Gerenciando alunos</h1>
-
-        <div className="btns">
-          <button type="button" className="btn btn--primary">
-            Cadastrar
-          </button>
-          <Input type="text" placeholder="Buscar Aluno" search={search}>
-            <IoMdSearch />
-          </Input>
-        </div>
-      </nav>
-      <Content>
-        <TableList
-          header={['Nome', 'E-mail', 'Idade']}
-          moduleName="students"
-          stateName="students"
-          setPage={setPage}
-        />
-      </Content>
-    </Container>
-  );
+  if (edit) return <Form />;
+  if (!edit) return <List search={search} setPage={setPage} />;
 }
