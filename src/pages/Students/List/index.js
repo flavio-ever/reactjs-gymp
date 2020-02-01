@@ -1,21 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { IoMdSearch } from 'react-icons/io';
-import PropTypes from 'prop-types';
-
+import { studentsFindRequest } from '~/store/modules/students/actions';
 import Input from '~/components/Input';
 import TableList from '~/components/TableList';
 
 import { Container, Content } from '~/global/default';
 
-export default function List({ search, setPage }) {
+export default function List() {
+  const [page, setPage] = useState(1);
+  const perPage = 5;
+  const [name, setName] = useState('');
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    async function loadStudents() {
+      dispatch(studentsFindRequest(page, perPage, name));
+    }
+
+    loadStudents();
+  }, [dispatch, name, page, perPage]);
+
+  const search = value => {
+    setName(value);
+  };
+
   return (
     <Container width="1200px">
       <nav>
         <h1>Gerenciando alunos</h1>
         <div className="btns">
-          <button type="button" className="btn btn--primary">
+          <Link to="students/new" type="button" className="btn btn--primary">
             Cadastrar
-          </button>
+          </Link>
           <Input type="text" placeholder="Buscar Aluno" search={search}>
             <IoMdSearch />
           </Input>
@@ -32,13 +51,3 @@ export default function List({ search, setPage }) {
     </Container>
   );
 }
-
-List.propTypes = {
-  search: PropTypes.func,
-  setPage: PropTypes.func,
-};
-
-List.defaultProps = {
-  search: Function,
-  setPage: Function,
-};

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Pagination from '../Pagination';
 import { Table } from './styles';
@@ -29,9 +29,9 @@ export default function TableList({ moduleName, stateName, header, setPage }) {
               <td>{student.email}</td>
               <td colSpan="0">{student.age}</td>
               <td colSpan="0">
-                <button type="button" className="btn--edit">
+                <Link className="btn--edit" to={`students/${student.id}/edit`}>
                   editar
-                </button>
+                </Link>
                 <button type="button" className="btn--remove">
                   apagar
                 </button>

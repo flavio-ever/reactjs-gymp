@@ -48,6 +48,7 @@ export const Container = styled.div`
     display: block;
   }
 
+  a.btn,
   button.btn {
     color: #fff;
     height: 36px;
@@ -57,6 +58,8 @@ export const Container = styled.div`
     font-weight: bold;
     transition: background 0.3s;
     display: flex;
+    align-items: center;
+    font-size: 14px;
 
     &.btn--primary {
       background: #ee4d64;
@@ -81,5 +84,27 @@ export const Container = styled.div`
 export const Content = styled.div`
   background: #fff;
   border-radius: 4px;
-  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+  padding: ${props => (props.pad ? `${props.pad}px` : '30px')};
+`;
+
+export const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: ${props => (props.size ? `${props.size}%` : '100%')};
+`;
+
+export const Inputs = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #444444;
+    margin-bottom: 8px;
+  }
 `;

@@ -28,11 +28,13 @@ export const Table = styled.table`
     text-align: right;
   }
 
+  a,
   button {
     display: inline-block;
     height: auto;
     margin-left: 15px;
     font-weight: normal;
+    font-size: 14px;
 
     &.btn--edit {
       color: #4d85ee;
